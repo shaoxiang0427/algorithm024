@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool huiwen(string s,int low,int high) {
+        for(int i = low,j = high;i<j;i++,j--) {
+            if (s[i]!=s[j]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    bool validPalindrome(string s) {
+
+        if (s.size()==0) {
+            return true;
+        }
+
+        int low = 0;
+        int high = s.size()-1;
+
+        while (low <high) {
+            if (s[low] == s[high]) {
+                low++;
+                high--;
+            } else {
+                return huiwen(s,low+1,high)||huiwen(s,low,high-1);
+            }
+        }
+        return true;
+    }
+};
